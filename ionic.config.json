@@ -1,0 +1,7 @@
+{
+  "name": "duyIonic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
