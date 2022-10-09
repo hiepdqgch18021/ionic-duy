@@ -122,7 +122,8 @@ const Detail: React.FC = () => {
           <IonTabButton tab="myHome" href='/home'>
             <IonLabel>Home</IonLabel>
           </IonTabButton>
-        </IonTabBar>
+    </IonTabBar>
+    
     </IonPage>
   );
 };
