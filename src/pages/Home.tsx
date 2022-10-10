@@ -4,9 +4,9 @@ import { IonButton, IonContent,IonAlert,IonDatetime, IonHeader, IonInput, IonIte
 import { useEffect, useState } from 'react';
 import { deleteAllTripInfo, getAllTrip, insertTrip} from '../databaseHandler';
 import { Trips } from '../models/TripDB';
-import {add, folder } from 'ionicons/icons';
+import {add, folder, trash } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
-
+import './home.css' 
 const Home: React.FC = () => {
 const [trip_Name,setName] = useState<string>('');
 const [trip_destination,setDestination] = useState<string>('');
@@ -26,34 +26,13 @@ const AllInformation = await getAllTrip();
 setAllInformation(AllInformation);
 }
 
-// const dateHandled = (e:any) =>{
-// const handleDate = new Date(e.detail.value);
-// setDate(handleDate.toLocaleDateString("en-GB"));
-// }
+
 
 const deleteAllTripHandler = async ()=>{
 const removeDB  = await deleteAllTripInfo();
 return removeDB;
 }
 
-// const saveTripsHandler = async () =>{
-// const newTrip: Trips ={
-// 'trip_Name':trip_Name ,
-// 'trip_destination':trip_destination,
-// 'trip_transport':trip_transport,
-// 'trip_date':trip_date,
-// 'trip_payment':trip_payment,
-// 'trip_risk':trip_risk,
-// 'trip_description':trip_description,
-
-// }
-
-// if(!trip_Name ||!trip_destination ||!trip_date ||!trip_risk ||!trip_transport ||!trip_payment){
-// alert("You lack required field")
-// }else{ 
-// await insertTrip(newTrip);     
-// }
-// }
 
 
 
@@ -63,21 +42,24 @@ fetchData();
 
 return (
 <IonPage>
-<IonHeader>
+<IonHeader class='header-home'>
 <IonToolbar color="primary">
   <IonTitle>M-Expense</IonTitle>
 </IonToolbar>
 </IonHeader>
 <IonContent fullscreen>
-    <IonButton href='/InputPage'>
-      <IonLabel>
-        <h6>New Trip</h6>
-        <IonIcon slot="icon-only" icon={add}></IonIcon>
-        <IonIcon slot="icon-only" icon={folder}></IonIcon>
-      </IonLabel>
-    </IonButton>
 
-  <IonButton onClick={() => setDeleteInfo(true)} color="danger" >Delete</IonButton>          
+  <IonButton  onClick={() => setDeleteInfo(true)} color="danger" >
+    <IonIcon slot="icon-only" icon={trash}></IonIcon>
+  </IonButton> 
+
+  <IonButton href='/InputPage' class='add-button'>
+    <IonLabel>
+      <IonIcon slot="icon-only" icon={add}></IonIcon>
+      <IonIcon slot="icon-only" icon={folder}></IonIcon>
+    </IonLabel>
+  </IonButton>
+    
 <IonAlert
  isOpen={DeleteInfo}
  onDidDismiss={() => setDeleteInfo(false)}
@@ -100,13 +82,13 @@ return (
    }
  ]}
 />
-  <IonItemDivider>All Trips</IonItemDivider>
+  <IonItemDivider class='title'>All Trips</IonItemDivider>
 
 { allTrips &&
 <IonList>
   { allTrips.map(c=>
             <IonItem routerLink={'/Detail/' + c.id} button key={c.id}>
-              <IonLabel color={"primary"}>{c.trip_Name}</IonLabel>                    
+              <IonLabel color={"primary"}>{c.trip_date} | {c.trip_Name}-{c.trip_destination}</IonLabel>                    
             </IonItem>                
       
   )}

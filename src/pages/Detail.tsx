@@ -49,43 +49,42 @@ const Detail: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar color="primary">
-          <IonTitle> the detail of - {id}</IonTitle>
+          <IonTitle>M-Expense</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent fullscreen>
 
         <IonList>
-          <IonListHeader>
-            <IonLabel color={"primary"}><h1>{trip_Name}</h1></IonLabel>
-          </IonListHeader>
+
           <IonItem>
-            <IonLabel>Destination</IonLabel>
-            <IonLabel>{trip_destination}</IonLabel>
+            <IonLabel></IonLabel>
           </IonItem>
 
           <IonItem>
-            <IonLabel >Transport</IonLabel>
-            <IonLabel>{trip_transport}</IonLabel>
+            <IonLabel>Name of the trip : {trip_Name}</IonLabel>
+          </IonItem>
+          <IonItem>
+            <IonLabel>Destination : {trip_destination}</IonLabel>
+          </IonItem>
+
+          <IonItem>
+            <IonLabel >Transport : {trip_transport}</IonLabel>
           </IonItem>
           
           <IonItem>
-            <IonLabel >Date</IonLabel>
-            <IonLabel>{trip_date}</IonLabel>
+            <IonLabel >Date : {trip_date}</IonLabel>
           </IonItem>   
           <IonItem>
-            <IonLabel >account number</IonLabel>
-            <IonLabel>{trip_payment}</IonLabel>
+            <IonLabel >account number : {trip_payment}</IonLabel>
           </IonItem>
 
           <IonItem>
-            <IonLabel >Description</IonLabel>
-            <IonLabel>{trip_description}</IonLabel>
+            <IonLabel >Description : {trip_description}</IonLabel>
           </IonItem>
          
           <IonItem>
-            <IonLabel >The Risk</IonLabel>
-            <IonLabel>{trip_risk}</IonLabel>
+            <IonLabel >The Risk : {trip_risk}</IonLabel>
           </IonItem>
         </IonList>
       </IonContent>
